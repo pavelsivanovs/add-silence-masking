@@ -1,0 +1,39 @@
+experiment: "Default max"
+output_dir: "./models/default_max"
+best_checkpoint: "checkpoint-572"
+
+seed: 42
+
+data:
+  label2id: { "bonafide": 1, "spoof": 0 }
+  sampling_rate: 16000
+
+  train:
+    data_file: "data/asv2019_la/asv_2019.train.tsv"
+    data_root: "./data/asv2019_la/ASVspoof2019_LA_train/flac"
+    pathfile_col: "audio_file_name"
+    label_col: "key"
+  #    label_map: ${data.label_map}
+
+  val:
+    data_file: "data/asv2019_la/asv_2019.dev.tsv"
+    data_root: "./data/asv2019_la/ASVspoof2019_LA_dev/flac"
+    pathfile_col: "audio_file_name"
+    label_col: "key"
+
+  test:
+    data_file: "data/asv2019_la/asv_2019.eval.tsv"
+    data_root: "./data/asv2019_la/ASVspoof2019_LA_eval/flac"
+    pathfile_col: "audio_file_name"
+    label_col: "key"
+
+model:
+  pooling_mode: "max"  # can also be sum or max
+
+training:
+  freeze_feature_encoder: true
+  freeze_vaw2vec2: false
+
+telegram:
+  bot_token: ${oc.env:TELEGRAM_BOT_TOKEN}
+  chat_id: ${oc.env:TELEGRAM_CHAT_ID}
