@@ -15,7 +15,6 @@ def resolve_audio_path_relative_to_data_file(data_root: str, audio_file_path: st
     return str(data_root_path / audio_path)
 
 
-# TODO: move this to config as parameter
 AUDIO_LENGTH_LIMIT_IN_SECONDS = 10
 SAMPLE_RATE = 16000
 

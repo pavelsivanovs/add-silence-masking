@@ -13,7 +13,6 @@ def get_device() -> str:
     return "cpu"
 
 
-# TODO remove from here
 device = get_device()
 
 
